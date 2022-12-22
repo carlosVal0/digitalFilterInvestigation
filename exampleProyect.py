@@ -15,3 +15,5 @@ plt.plot(t,y2,'blue')
 plt.xlabel('sample(n)')
 plt.ylabel('voltage(V)')
 plt.show()
+
+print("EOF")
