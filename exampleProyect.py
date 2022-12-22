@@ -16,3 +16,4 @@ plt.xlabel('sample(n)')
 plt.ylabel('voltage(V)')
 plt.show()
 
+print("end")
