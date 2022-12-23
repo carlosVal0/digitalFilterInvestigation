@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import digitalFilters
 
-Fs = 44100
+Fs = 8000
 f = 400
 f2 = 800
 sample = 300
@@ -14,7 +14,7 @@ y4 = digitalFilters.resonatorFilter(0.9,Fs,f,x,y3)
 print(y4)
 plt.figure()
 plt.plot(x, y3,'red')
-plt.plot(x,y4,'blue')
+plt.plot(y4[0],y4[1],'blue')
 plt.xlabel('sample(n)')
 plt.ylabel('voltage(V)')
 plt.show()

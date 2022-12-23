@@ -2,17 +2,25 @@ import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
 
-def resonatorFilter(r,Fs,f0,t,x):
-      w0 = 2*np.pi*(f0/Fs)
-      b0 = (1-r)*np.sqrt(1+r**2 - 2*r*np.cos(2*w0))
-      num = [b0]
-      den = [1.,2*r*np.cos(w0),r**2]
-      H = signal.TransferFunction(num,den)
-      H = H._z_to_zinv(num,den)
-      w, mag, phase = signal.bode(H)
-      plt.figure()
-      plt.semilogx(w, mag)    # Bode magnitude plot
-      plt.figure()
-      plt.semilogx(w, phase)  # Bode phase plot
-      plt.show()
-      return signal.lfilter(H.num,H.den,x)
+def resonator_filter(input_signal, fs, time, f0):
+    b, a = signal.iirnotch(f0, 10, fs)
+    filtered_signal = signal.filtfilt(b, a, input_signal)
+    return filtered_signal
+
+t = 0.5
+fs = 8000
+f0 = 1200
+t_array = np.arange(t*fs)
+
+x = np.sin(2*np.pi*f0/fs*t_array)
+x1 = np.sin(2*np.pi*60/fs*t_array)
+y = resonator_filter(x1+x,fs,t_array,f0)
+
+plt.figure()
+plt.plot(t_array,x1,'red')
+plt.show()
+
+plt.figure()
+plt.plot(t_array,x1+x,'red')
+plt.plot(t_array,y,'blue')
+plt.show()
