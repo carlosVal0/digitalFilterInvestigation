@@ -12,7 +12,7 @@ y2 = np.sin(2*np.pi*f2*t/Fs)
 yerr = 0.1 * np.random.normal(size=len(t)) 
 plt.plot(t, y1 + yerr,'red')
 plt.plot(t,y2,'blue')
-plt.xlabel('sample(n)')
+plt.xlabel('Sample(n)')
 plt.ylabel('voltage(V)')
 plt.show()
 
