@@ -7,6 +7,10 @@ def resonator_filter(input_signal, fs, time, f0):
     filtered_signal = signal.filtfilt(b, a, input_signal)
     return filtered_signal
 
+def signal_energy(input_signal):
+    
+    return np.power(np.abs(input_signal),2) 
+
 
 if __name__ == "__main__":
         
