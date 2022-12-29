@@ -2,7 +2,7 @@ import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
 
-def resonator_filter(input_signal, fs, time, f0):
+def resonator_filter(input_signal, fs, f0):
     b, a = signal.iirnotch(f0, 10, fs)
     filtered_signal = signal.filtfilt(b, a, input_signal)
     return filtered_signal
